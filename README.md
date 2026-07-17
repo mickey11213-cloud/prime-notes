@@ -1,7 +1,8 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>prime×notes</title>
   <style>
     :root {
@@ -37,15 +38,15 @@
       justify-content: center;
       min-height: 100svh;
       overflow: hidden;
-      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+      padding: env(safe-area-inset-top) 8px env(safe-area-inset-bottom);
     }
 
     .app {
       display: grid;
-      height: 100svh;
-      max-width: 520px;
+      height: min(100svh, 900px);
+      max-width: min(96vw, 520px);
       min-height: 0;
-      padding: 24px 10px 18px;
+      padding: 18px 0 14px;
       width: 100%;
     }
 
@@ -275,8 +276,8 @@
       display: grid;
       gap: 0;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: repeat(4, minmax(54px, 1fr));
-      min-height: 228px;
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+      min-height: 0;
     }
 
     .key-button {
@@ -288,12 +289,18 @@
       font-size: clamp(1.5rem, 9vw, 2.35rem);
       font-weight: 900;
       letter-spacing: 0;
-      min-height: 54px;
+      min-height: 0;
       touch-action: manipulation;
     }
 
     .key-button.utility {
       font-size: clamp(1rem, 5.2vw, 1.35rem);
+    }
+
+    .game-keyboard,
+    .game-keyboard *,
+    .key-button {
+      touch-action: none;
     }
 
     .result-panel {
@@ -355,16 +362,24 @@
     }
 
     @media (max-width: 520px) {
+      html,
+      body {
+        min-height: 100svh;
+        overflow: hidden;
+        width: 100%;
+      }
+
       body {
         align-items: stretch;
-        justify-content: stretch;
+        justify-content: center;
+        padding: env(safe-area-inset-top) 8px env(safe-area-inset-bottom);
       }
 
       .app {
+        height: 100svh;
         max-width: none;
-        padding-left: 6px;
-        padding-right: 6px;
-        width: 100vw;
+        padding: 5px 0 0;
+        width: 100%;
       }
 
       .factor-menu,
@@ -373,26 +388,50 @@
       }
 
       .game-screen {
-        gap: 7px;
-        grid-template-rows: auto minmax(0, 1fr) auto minmax(220px, 42svh);
-        padding-top: 4px;
+        gap: 0;
+        grid-template-rows: 36px minmax(0, 1fr) minmax(48px, 8svh) minmax(226px, 50svh);
+        padding-top: 0;
       }
 
       .question-area {
-        gap: 7px;
-        grid-template-rows: minmax(96px, 1fr) auto;
+        gap: 5px;
+        grid-template-rows: minmax(0, 1fr) auto;
+        min-height: 0;
+        padding-bottom: 5px;
       }
 
       .main-number {
-        min-height: 96px;
+        min-height: 0;
       }
 
       .answer-display {
-        min-height: 48px;
+        min-height: 0;
       }
 
       .game-keyboard {
-        min-height: 220px;
+        gap: 0;
+        min-height: 0;
+      }
+
+      .key-button {
+        font-size: clamp(1.35rem, 9vw, 2.05rem);
+        min-height: 0;
+      }
+
+      .key-button.utility {
+        font-size: clamp(.95rem, 5.8vw, 1.35rem);
+      }
+    }
+
+    @media (max-height: 700px) {
+      .game-screen {
+        grid-template-rows: 34px minmax(0, 1fr) minmax(44px, 8svh) minmax(206px, 50svh);
+      }
+    }
+
+    @media (max-height: 600px) {
+      .game-screen {
+        grid-template-rows: 32px minmax(0, 1fr) minmax(40px, 8svh) minmax(186px, 50svh);
       }
     }
   </style>
