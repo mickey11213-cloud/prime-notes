@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -23,6 +24,7 @@
     body {
       height: 100%;
       margin: 0;
+      width: 100%;
     }
 
     body {
@@ -36,17 +38,16 @@
       justify-content: center;
       min-height: 100svh;
       overflow: hidden;
-      padding: env(safe-area-inset-top) 14px env(safe-area-inset-bottom);
+      padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     }
 
     .app {
       display: grid;
       height: 100svh;
-      max-height: 900px;
-      max-width: 440px;
-      min-height: 560px;
-      padding: 34px 0 28px;
-      width: min(100%, 440px);
+      max-width: 520px;
+      min-height: 0;
+      padding: 24px 10px 18px;
+      width: 100%;
     }
 
     .screen {
@@ -332,9 +333,8 @@
 
     @media (max-height: 620px) {
       .app {
-        min-height: 0;
-        padding-bottom: 18px;
-        padding-top: 18px;
+        padding-bottom: 10px;
+        padding-top: 10px;
       }
 
       .brand {
@@ -352,6 +352,48 @@
 
       .main-number {
         min-height: 92px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        align-items: stretch;
+        justify-content: stretch;
+      }
+
+      .app {
+        max-width: none;
+        padding-left: 6px;
+        padding-right: 6px;
+        width: 100vw;
+      }
+
+      .factor-menu,
+      .result-panel {
+        padding-bottom: 10px;
+      }
+
+      .game-screen {
+        gap: 7px;
+        grid-template-rows: auto minmax(0, 1fr) auto minmax(220px, 42svh);
+        padding-top: 4px;
+      }
+
+      .question-area {
+        gap: 7px;
+        grid-template-rows: minmax(96px, 1fr) auto;
+      }
+
+      .main-number {
+        min-height: 96px;
+      }
+
+      .answer-display {
+        min-height: 48px;
+      }
+
+      .game-keyboard {
+        min-height: 220px;
       }
     }
   </style>
